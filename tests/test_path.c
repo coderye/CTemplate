@@ -16,9 +16,9 @@ Node *head;
 void
 setup (void)
 {
-	head = path_init(5, 5);
-	path_append(6, 6);
-	path_append(7, 7);
+	head = path_init(5.0, 5.0);
+	path_append(6.0, 6.0);
+	path_append(7.0, 7.0);
 }
 
 void
@@ -29,17 +29,17 @@ teardown (void)
 
 START_TEST(test_path_init)
 {
-	ck_assert_int_eq(path_head_node()->x, 5);
-	ck_assert_int_eq(path_head_node()->y, 5);
+	ck_assert(path_head_node()->x == 5.0);
+	ck_assert(path_head_node()->y == 5.0);
 
-	ck_assert_int_eq(path_current_node()->x, 7);
-	ck_assert_int_eq(path_current_node()->y, 7);
+	ck_assert(path_current_node()->x == 7.0);
+	ck_assert(path_current_node()->y == 7.0);
 }
 END_TEST
 
 START_TEST(test_path_append_neg)
 {
-	Node *path = path_append (-1, -1);
+	Node *path = path_append (-1.0, -1.0);
 	ck_assert_msg (path == NULL,
 			"NULL should be returned on attempt to append with "
 			"a negative value");
@@ -48,9 +48,9 @@ END_TEST
 
 START_TEST(test_path_append_zero)
 {
-	Node *path = path_append (0, 0);
-	if (path_current_node(path)->x != 0 ||
-		path_current_node(path)->y != 0)
+	Node *path = path_append (0.0, 0.0);
+	if (path_current_node(path)->x != 0.0 ||
+		path_current_node(path)->y != 0.0)
 	{
 		ck_abort_msg("Zero is a valid value");
 	}
@@ -72,7 +72,7 @@ path_suite(void)
 	TCase *tc_limits = tcase_create ("Limits");
 	tcase_add_test(tc_limits, test_path_append_neg);
 	tcase_add_test(tc_limits, test_path_append_zero);
-	//suite_add_tcase(s, tc_limits);
+	suite_add_tcase(s, tc_limits);
 
 	return s;
 }
