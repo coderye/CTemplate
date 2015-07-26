@@ -64,6 +64,7 @@ TAGS.sub
 .gdb_history
 
 tests/*.log
+build/
 
 # ignore core files, but not java/net/protocol/core/
 core
