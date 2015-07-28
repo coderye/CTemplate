@@ -73,8 +73,8 @@ or the following for CodeBlocks
  mkdir build
  cd build
  cmake -G "CodeBlocks - Unix Makefiles" ..
- nmake
- nmake test
+ make
+ make test
 ```
 or the following for MSVC:
 ```
